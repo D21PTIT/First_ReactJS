@@ -9,7 +9,9 @@ Album.propTypes = {
 function Album(props) {
     const { album } = props;
     return (
-        <div className='album'>
+        <div onClick={() => {
+            alert(album.name + '  Dang duoc phat')
+        }} className='album'>
             <div className='a'>
                 <img src={album.photo} alt="" />
             </div>

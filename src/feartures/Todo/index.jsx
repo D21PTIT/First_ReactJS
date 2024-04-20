@@ -10,15 +10,18 @@ function Fearture(props) {
     const arr = [
         {
             id: 1,
-            name: 'sleep'
+            name: 'sleep',
+            status: 'new',
         },
         {
             id: 2,
-            name: 'code'
+            name: 'code',
+            status: 'ok',
         },
         {
             id: 3,
-            name: 'eat'
+            name: 'eat',
+            status: 'ok'
         },
     ]
     return (
