@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import TodoList from './components/TodoList';
 
@@ -7,29 +7,28 @@ Fearture.propTypes = {
 };
 
 function Fearture(props) {
-    const arr = [
-        {
-            id: 1,
-            name: 'sleep',
-            status: 'new',
-        },
-        {
-            id: 2,
-            name: 'code',
-            status: 'ok',
-        },
-        {
-            id: 3,
-            name: 'eat',
-            status: 'ok'
-        },
-    ]
+    const arr = ['100gem', 'Book_of_Hero', '200_Clan-Medal'];
+    const [gift, setGift] = useState();
     return (
         <div>
-            <h3>TodoList</h3>
-            <TodoList todoList={arr}></TodoList>
+            {arr.map((it) => (
+                <label>
+                    <input
+                        type='radio'
+                        value={it}
+                        checked={gift === it}
+                        onChange={() => { setGift(it) }}
+                    />
+                    {it}
+                </label>
+            ))}
+            <button onClick={() => {
+                alert(gift);
+            }}>
+                Claim
+            </button>
         </div>
-    );
+    )
 }
 
 export default Fearture;
