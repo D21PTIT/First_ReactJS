@@ -10,23 +10,19 @@ function Fearture(props) {
     const arr = ['100gem', 'Book_of_Hero', '200_Clan-Medal'];
     const [gift, setGift] = useState();
     return (
-        <div>
+        <div style={{ padding: '20px' }}>
+            <h2> Select a free gift</h2>
             {arr.map((it) => (
-                <label>
+                <div>
                     <input
-                        type='radio'
-                        value={it}
-                        checked={gift === it}
+                        type="radio"
+                        checked={it === gift}
                         onChange={() => { setGift(it) }}
                     />
                     {it}
-                </label>
+                </div>
             ))}
-            <button onClick={() => {
-                alert(gift);
-            }}>
-                Claim
-            </button>
+            <button onClick={() => { alert(gift) }}>Claim</button>
         </div>
     )
 }
