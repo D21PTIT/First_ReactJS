@@ -4,10 +4,11 @@ import './App.css';
 import Song from './feartures/Song';
 import Fearture from './feartures/Todo';
 import Brawl from './feartures/Brawl';
+import CallAPI from './feartures/CallAPI';
 
 function App() {
-  const arr =['Fearture','Song','Brawl']
-  const [pos, setPos] = useState();
+  const arr =['Fearture','Song','Brawl','CallAPI']
+  const [pos, setPos] = useState('Fearture');
   return (
     <div style={{padding: '30px'}}>
       {arr.map((it)=>(
@@ -19,7 +20,7 @@ function App() {
           {it}
         </button>
       ))}
-      {pos==='Fearture'? <Fearture /> : (pos==='Song' ? <Song /> : <Brawl/>)}
+      {pos==='Fearture'? <Fearture /> : (pos==='Song' ? <Song /> : (pos==='Brawl' ? <Brawl></Brawl> : <CallAPI></CallAPI>))}
     </div>
   )
 
