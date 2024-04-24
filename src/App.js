@@ -5,25 +5,48 @@ import Song from './feartures/Song';
 import Fearture from './feartures/Todo';
 import Brawl from './feartures/Brawl';
 import CallAPI from './feartures/CallAPI';
+import Count_Timer from './feartures/Count_Timer';
 
 function App() {
-  const arr =['Fearture','Song','Brawl','CallAPI']
-  const [pos, setPos] = useState('Fearture');
+  const features = ['Fearture', 'Song', 'Brawl', 'CallAPI', 'Count_Timer','Use_effect_DEMO'];
+  const [selectedFeature, setSelectedFeature] = useState('Fearture');
+
+  const renderFeature = () => {
+    switch (selectedFeature) {
+      case 'Fearture':
+        return <Fearture />;
+      case 'Song':
+        return <Song />;
+      case 'Brawl':
+        return <Brawl />;
+      case 'CallAPI':
+        return <CallAPI />;
+      case 'Count_Timer':
+        return <Count_Timer></Count_Timer>
+      case 'Use_effect_DEMO':
+        return <useEffect></useEffect>
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div style={{padding: '30px'}}>
-      {arr.map((it)=>(
-        <button onClick={()=>{
-          setPos(it);
-        }}
-        style={it===pos ? {background: '#000', color: '#fff'} : {}}
+    <div style={{ padding: '30px' }}>
+      {features.map((feature) => (
+        <button
+          key={feature}
+          onClick={() => setSelectedFeature(feature)}
+          style={{background: feature === selectedFeature ? '#000' : '#fff',
+          color: feature === selectedFeature ? '#fff' : '#000',
+          marginRight: '20px'}
+        }
         >
-          {it}
+          {feature}
         </button>
       ))}
-      {pos==='Fearture'? <Fearture /> : (pos==='Song' ? <Song /> : (pos==='Brawl' ? <Brawl></Brawl> : <CallAPI></CallAPI>))}
+      {renderFeature()}
     </div>
-  )
-
+  );
 
 }
 
