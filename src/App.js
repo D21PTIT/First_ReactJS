@@ -7,10 +7,12 @@ import Brawl from './feartures/Brawl';
 import CallAPI from './feartures/CallAPI';
 import Count_Timer from './feartures/Count_Timer';
 import Effect from './feartures/Effect';
+import Reduce from './feartures/Reduce';
+import Reducer from './feartures/Reduce';
 
 
 function App() {
-  const features = ['Fearture', 'Song', 'Brawl', 'CallAPI', 'Count_Timer','Effect'];
+  const features = ['Fearture', 'Song', 'Brawl', 'CallAPI', 'Count_Timer','Effect', 'UseReduce'];
   const [selectedFeature, setSelectedFeature] = useState('Fearture');
 
   const renderFeature = () => {
@@ -27,6 +29,8 @@ function App() {
         return <Count_Timer></Count_Timer>
       case 'Effect':
         return <Effect></Effect>
+      case 'UseReduce':
+        return <Reducer></Reducer>
       default:
         return null;
     }
