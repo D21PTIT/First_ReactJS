@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Song from './feartures/Song';
@@ -9,50 +9,35 @@ import Count_Timer from './feartures/Count_Timer';
 import Effect from './feartures/Effect';
 import Reduce from './feartures/Reduce';
 import Reducer from './feartures/Reduce';
+import { Link, NavLink, Route, Routes } from 'react-router-dom';
 
 
 function App() {
-  const features = ['Fearture', 'Song', 'Brawl', 'CallAPI', 'Count_Timer','Effect', 'UseReduce'];
-  const [selectedFeature, setSelectedFeature] = useState('Fearture');
-
-  const renderFeature = () => {
-    switch (selectedFeature) {
-      case 'Fearture':
-        return <Fearture />;
-      case 'Song':
-        return <Song />;
-      case 'Brawl':
-        return <Brawl />;
-      case 'CallAPI':
-        return <CallAPI />;
-      case 'Count_Timer':
-        return <Count_Timer></Count_Timer>
-      case 'Effect':
-        return <Effect></Effect>
-      case 'UseReduce':
-        return <Reducer></Reducer>
-      default:
-        return null;
-    }
-  };
-
   return (
-    <div style={{ padding: '30px' }}>
-      {features.map((feature) => (
-        <button
-          key={feature}
-          onClick={() => setSelectedFeature(feature)}
-          style={{background: feature === selectedFeature ? '#000' : '#fff',
-          color: feature === selectedFeature ? '#fff' : '#000',
-          marginRight: '20px'}
-        }
-        >
-          {feature}
-        </button>
-      ))}
-      {renderFeature()}
+    <div class='ok'>
+      <NavLink to='/feature'><button>Fearture</button></NavLink>
+      <NavLink to='/song'><button>Song</button></NavLink>
+      <NavLink to='/brawl'><button>Brawl</button></NavLink>
+      <NavLink to='/callapi'><button>CallAPI</button></NavLink>
+      <NavLink to='/count_timer'><button>Count_Timer</button></NavLink>
+      <NavLink to='/effect'><button>Effect</button></NavLink>
+      <NavLink to='/usereducer'><button>Reducer</button></NavLink>
+
+
+      <Routes>
+        <Route path='/feature' element={<Fearture />} />
+        <Route path='/song' element={<Song />} />
+        <Route path='/brawl' element={<Brawl />} />
+        <Route path='/callapi' element={<CallAPI />} />
+        <Route path='/count_timer' element={<Count_Timer />} />
+        <Route path='/effect' element={<Effect />} />
+        <Route path='/usereducer' element={<Reducer />} />
+    </Routes>
+
+
+
     </div>
-  );
+  )
 
 }
 
