@@ -13,6 +13,7 @@ import { Link, NavLink, Route, Routes } from 'react-router-dom';
 import products from './api/productApi';
 import categoryApi from './api/categoryApi';
 import HookForm from './components/HookForm';
+import Header from './components/Heading';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div class='ok'>
+      <Header></Header>
       <NavLink to='/feature'><button>Fearture</button></NavLink>
       <NavLink to='/song'><button>Song</button></NavLink>
       <NavLink to='/brawl'><button>Brawl</button></NavLink>
