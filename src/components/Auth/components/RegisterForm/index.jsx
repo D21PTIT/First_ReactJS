@@ -24,7 +24,7 @@ const schema = yup.object().shape({
   password: yup.string().required('Password is required'),
 });
 
-export default function Fearture() {
+export default function Register() {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
@@ -108,4 +108,3 @@ export default function Fearture() {
     </ThemeProvider>
   );
 }
-

@@ -7,8 +7,35 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink } from "react-router-dom";
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Register from "../Auth/components/RegisterForm";
 
 export default function Header() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const formJson = Object.fromEntries(formData.entries());
+    const email = formJson.email;
+    console.log(email);
+    // Here you can handle form submission, like sending data to server
+    handleClose(); // Close the dialog after form submission
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -43,9 +70,31 @@ export default function Header() {
           <NavLink to="/hookform">
             <Button color="inherit">HookForm</Button>
           </NavLink>
-          <Button color="inherit">Đăng Nhập</Button>
+          <Button color="inherit" onClick={handleClickOpen}>Đăng Nhập</Button>
         </Toolbar>
       </AppBar>
+      <Dialog
+        disableEscapeKeyDown
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          component: 'form',
+          onSubmit: handleSubmit,
+          // Add aria-labelledby for accessibility
+          'aria-labelledby': 'dialog-title',
+        }}
+      >
+        <DialogTitle id="dialog-title">Đăng nhập nha hihi</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            <Register></Register>
+          </DialogContentText>
+        
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 }
